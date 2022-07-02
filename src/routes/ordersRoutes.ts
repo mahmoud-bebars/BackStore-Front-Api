@@ -8,6 +8,7 @@ const ordersRoute = (app: Application) => {
   app.delete('/orders/:id', jwt.verfiyToken, handlers.remove)
   app.get('/orders', jwt.verfiyToken, handlers.index)
   app.get('/orders/:id', jwt.verfiyToken, handlers.show)
+  app.post('/orders/:id/products', jwt.verfiyToken, handlers.addProduct)
 }
 
 export default ordersRoute

@@ -28,14 +28,15 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Orders
 
-|  #  | Method |             Endpoint             |    Route    | Authorization |       Located       |
-| :-: | :----: | :------------------------------: | :---------: | :-----------: | :-----------------: |
-|  1  |  GET   |      Index(GET All orders)       |   /orders   |   required    |   orderController   |
-|  2  |  GET   |      Show(GET order by ID)       | /orders/:id |   required    |   orderController   |
-|  2  |  POST  |          create(order)           |   /orders   |   required    |   orderController   |
-|  3  |  PUT   |  Update(Update order row by ID)  | /orders/:id |   required    |   orderController   |
-|  4  | DELETE |  Remove(Delete order row by ID)  | /orders/:id |   required    |   orderController   |
-|  5  |  GET   | UserOrder(GET All User's Orders) | /userOrder  |   required    | dashboardController |
+|  #  | Method |                   Endpoint                    |        Route         | Authorization |       Located       |
+| :-: | :----: | :-------------------------------------------: | :------------------: | :-----------: | :-----------------: |
+|  1  |  GET   |             Index(GET All orders)             |       /orders        |   required    |   orderController   |
+|  2  |  GET   |             Show(GET order by ID)             |     /orders/:id      |   required    |   orderController   |
+|  2  |  POST  |                 create(order)                 |       /orders        |   required    |   orderController   |
+|  3  |  PUT   |        Update(Update order row by ID)         |     /orders/:id      |   required    |   orderController   |
+|  4  | DELETE |        Remove(Delete order row by ID)         |     /orders/:id      |   required    |   orderController   |
+|  5  |  POST  | add product(create product refrence to order) | /orders/:id/products |   required    |   orderController   |
+|  6  |  GET   |       UserOrder(GET All User's Orders)        |      /userOrder      |   required    | dashboardController |
 
 #### Dashboard
 
@@ -66,6 +67,15 @@ These are the notes from a meeting with the frontend developer that describe wha
 |  5  |    email    |    VARCHAR(100)    |     Email of the user      |
 |  6  |  username   |    VARCHAR(50)     | for selecting information  |
 |  7  |  password   |        text        | hash pass for user account |
+
+#### Order_product
+
+|  #  | Column Name |             Type             |       Description        | Forgien_KY |
+| :-: | :---------: | :--------------------------: | :----------------------: | :--------: |
+|  1  |     id      |      SERIAL PRIMARY KEY      |         indexing         |
+|  4  |  quantity   |           Integer            | no. of products in order |
+|  2  |   orderid   |  bigint refrence orders(id)  |  user id for the order   |    YES     |
+|  3  |  productid  | bigint refrence products(id) |        product id        |    YES     |
 
 #### Orders
 

@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 export type Order = {
   id?: number
   userId?: number
-  productId?: number
   orderId?: number
   quantity: number
   status: string
@@ -16,11 +15,10 @@ export class OrderStore {
     try {
       const conn = await Database.connect()
       const sql =
-        'INSERT INTO orders (userid,productid,orderid,quantity,status) VALUES($1, $2, $3,$4,$5) RETURNING *'
+        'INSERT INTO orders (userid,orderid,quantity,status) VALUES($1, $2, $3,$4) RETURNING *'
       const orderId = uuidv4()
       const result = await conn.query(sql, [
         o.userId,
-        o.productId,
         orderId,
         o.quantity,
         o.status,
@@ -30,7 +28,6 @@ export class OrderStore {
       return {
         id: order.id,
         userId: order.userid,
-        productId: order.productid,
         orderId: order.orderid,
         quantity: order.quantity,
         status: order.status,
@@ -100,6 +97,30 @@ export class OrderStore {
       return order
     } catch (err) {
       throw new Error(`Could not delete order with id: ${id}. Error: ${err}`)
+    }
+  }
+  async addProduct(
+    quantity: number,
+    orderId: string,
+    productId: string
+  ): Promise<Order> {
+    try {
+      const sql =
+        'INSERT INTO order_products (quantity, order_id, product_id) VALUES($1, $2, $3) RETURNING *'
+      //@ts-ignore
+      const conn = await Client.connect()
+
+      const result = await conn.query(sql, [quantity, orderId, productId])
+
+      const order = result.rows[0]
+
+      conn.release()
+
+      return order
+    } catch (err) {
+      throw new Error(
+        `Could not add product ${productId} to order ${orderId}: ${err}`
+      )
     }
   }
 }

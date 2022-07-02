@@ -93,7 +93,6 @@ describe('Controllers Testing', () => {
         .post('/orders')
         .send({
           userId: 2,
-          productId: 2,
           quantity: 4,
           status: 'active',
         })
