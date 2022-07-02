@@ -1,8 +1,15 @@
 import supertest from 'supertest'
 import app from '../../server'
+import jwt from '../../utils/jwt'
 
-const testToken =
-  'barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibS5iZWJhcnMiLCJ1c2VySWQiOiI0NTQ5MGJiZS0wMDVlLTRiNTMtYWI4Mi1hNWRiMGVhODYwNGMiLCJpYXQiOjE2NTY1OTAxMzAsImV4cCI6MTY1NjY3NjUzMH0.0ANpL8RLkmxKC2S3xiBOqdw1P8e-A9uCwVtgz-8hXzk'
+const testUser = {
+  username: 'm.bebars',
+  userId: '1234567890',
+}
+// this testToken only used for generation so tests can pass any time without failing because of token expiration
+const token = jwt.generateToken(testUser.username, testUser.userId)
+
+const testToken = `barer ${token}`
 
 describe('Controllers Testing', () => {
   describe('Users Controller', () => {
