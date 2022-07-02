@@ -28,22 +28,23 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Orders
 
-|  #  | Method |                   Endpoint                    |        Route         | Authorization |       Located       |
-| :-: | :----: | :-------------------------------------------: | :------------------: | :-----------: | :-----------------: |
-|  1  |  GET   |             Index(GET All orders)             |       /orders        |   required    |   orderController   |
-|  2  |  GET   |             Show(GET order by ID)             |     /orders/:id      |   required    |   orderController   |
-|  2  |  POST  |                 create(order)                 |       /orders        |   required    |   orderController   |
-|  3  |  PUT   |        Update(Update order row by ID)         |     /orders/:id      |   required    |   orderController   |
-|  4  | DELETE |        Remove(Delete order row by ID)         |     /orders/:id      |   required    |   orderController   |
-|  5  |  POST  | add product(create product refrence to order) | /orders/:id/products |   required    |   orderController   |
-|  6  |  GET   |       UserOrder(GET All User's Orders)        |      /userOrder      |   required    | dashboardController |
+|  #  | Method |                   Endpoint                    |        Route         | Authorization |     Located     |
+| :-: | :----: | :-------------------------------------------: | :------------------: | :-----------: | :-------------: |
+|  1  |  GET   |             Index(GET All orders)             |       /orders        |   required    | orderController |
+|  2  |  GET   |             Show(GET order by ID)             |     /orders/:id      |   required    | orderController |
+|  2  |  POST  |                 create(order)                 |       /orders        |   required    | orderController |
+|  3  |  PUT   |        Update(Update order row by ID)         |     /orders/:id      |   required    | orderController |
+|  4  | DELETE |        Remove(Delete order row by ID)         |     /orders/:id      |   required    | orderController |
+|  5  |  POST  | add product(create product refrence to order) | /orders/:id/products |   required    | orderController |
 
 #### Dashboard
 
-|  #  | Method |             Endpoint             |       Route        | Authorization |       Located       |
-| :-: | :----: | :------------------------------: | :----------------: | :-----------: | :-----------------: |
-|  1  |  GET   | UserOrder(GET All User's Orders) |     /userOrder     |   required    | dashboardController |
-|  2  |  GET   |        Expensive Products        | /expinsiveProducts | not required  |  productController  |
+|  #  | Method |                      Endpoint                      |       Route        | Authorization |       Located       |
+| :-: | :----: | :------------------------------------------------: | :----------------: | :-----------: | :-----------------: |
+|  1  |  GET   |          UserOrder(GET All User's Orders)          |     /userOrder     |   required    | dashboardController |
+|  2  |  GET   |                 Expensive Products                 | /expinsiveProducts | not required  | dashboardController |
+|  3  |  GET   | Get all products that have been included in orders | /productsInOrders  | not required  | dashBoardController |
+|  6  |  GET   |          UserOrder(GET All User's Orders)          |     /userOrder     |   required    | dashboardController |
 
 ## Data Shapes
 

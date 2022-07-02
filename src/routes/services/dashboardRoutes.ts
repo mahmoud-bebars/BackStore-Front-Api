@@ -5,6 +5,7 @@ import jwt from '../../utils/jwt'
 const dashboardRoutes = (app: Application) => {
   app.get('/expinsiveProducts', handlers.expinsiveProducts)
   app.get('/usersOrders/:id', jwt.verfiyToken, handlers.usersOrder)
+  app.get('/productsInOrders', handlers.productsInOrders)
 }
 
 export default dashboardRoutes

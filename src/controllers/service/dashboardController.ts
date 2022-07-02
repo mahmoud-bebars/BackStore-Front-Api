@@ -27,8 +27,13 @@ const usersOrder = async (req: Request, res: Response) => {
     res.status(400).json({ error: error })
   }
 }
+const productsInOrders = async (_req: Request, res: Response) => {
+  const products = await dashboard.productsInOrders()
+  res.json(products)
+}
 
 export default {
   expinsiveProducts,
   usersOrder,
+  productsInOrders,
 }
